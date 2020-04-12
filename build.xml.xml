@@ -2,7 +2,7 @@
 <project name="0856520" default="all">
   
   
-  <property file="0856520.properties"/>
+  <property file="build.xml.properties"/>
   <!-- Uncomment the following property if no tests compilation is needed -->
   <!-- 
   <property name="skip.tests" value="true"/>
