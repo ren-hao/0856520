@@ -53,6 +53,55 @@
     <exclude name="**/?*.aj"/>
   </patternset>
   
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
   <!-- Modules -->
   
   
@@ -61,6 +110,9 @@
   <dirname property="module.0856520.basedir" file="${ant.file}"/>
   
   
+  <property name="module.jdk.home.0856520" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.0856520" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.0856520" value="${project.jdk.classpath}"/>
   
   <property name="compiler.args.0856520" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
   
@@ -72,6 +124,7 @@
   </path>
   
   <path id="0856520.module.production.classpath">
+    <path refid="${module.jdk.classpath.0856520}"/>
     <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
     <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
     <pathelement location="${path.variable.maven_repository}/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar"/>
@@ -99,6 +152,7 @@
   </path>
   
   <path id="0856520.module.classpath">
+    <path refid="${module.jdk.classpath.0856520}"/>
     <pathelement location="${0856520.output.dir}"/>
     <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
     <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
@@ -145,15 +199,15 @@
   
   <target name="compile.module.0856520" depends="compile.module.0856520.production,compile.module.0856520.tests" description="Compile module 0856520"/>
   
-  <target name="compile.module.0856520.production" description="Compile module 0856520; production classes">
+  <target name="compile.module.0856520.production" depends="register.custom.compilers" description="Compile module 0856520; production classes">
     <mkdir dir="${0856520.output.dir}"/>
-    <javac destdir="${0856520.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+    <javac2 destdir="${0856520.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.0856520}/javac">
       <compilerarg line="${compiler.args.0856520}"/>
       <bootclasspath refid="0856520.module.bootclasspath"/>
       <classpath refid="0856520.module.production.classpath"/>
       <src refid="0856520.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.0856520"/>
-    </javac>
+    </javac2>
     
     <copy todir="${0856520.output.dir}">
       <fileset dir="${module.0856520.basedir}/src">
@@ -163,7 +217,7 @@
     </copy>
   </target>
   
-  <target name="compile.module.0856520.tests" depends="compile.module.0856520.production" description="compile module 0856520; test classes" unless="skip.tests"/>
+  <target name="compile.module.0856520.tests" depends="register.custom.compilers,compile.module.0856520.production" description="compile module 0856520; test classes" unless="skip.tests"/>
   
   <target name="clean.module.0856520" description="cleanup module">
     <delete dir="${0856520.output.dir}"/>
