@@ -52,6 +52,20 @@
     <exclude name="**/?*.clj"/>
     <exclude name="**/?*.aj"/>
   </patternset>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
   
   <!-- Modules -->
   
@@ -145,15 +159,15 @@
   
   <target name="compile.module.0856520" depends="compile.module.0856520.production,compile.module.0856520.tests" description="Compile module 0856520"/>
   
-  <target name="compile.module.0856520.production" description="Compile module 0856520; production classes">
+  <target name="compile.module.0856520.production" depends="register.custom.compilers" description="Compile module 0856520; production classes">
     <mkdir dir="${0856520.output.dir}"/>
-    <javac destdir="${0856520.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+    <javac2 destdir="${0856520.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.0856520}"/>
       <bootclasspath refid="0856520.module.bootclasspath"/>
       <classpath refid="0856520.module.production.classpath"/>
       <src refid="0856520.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.0856520"/>
-    </javac>
+    </javac2>
     
     <copy todir="${0856520.output.dir}">
       <fileset dir="${module.0856520.basedir}/src">
@@ -163,7 +177,7 @@
     </copy>
   </target>
   
-  <target name="compile.module.0856520.tests" depends="compile.module.0856520.production" description="compile module 0856520; test classes" unless="skip.tests"/>
+  <target name="compile.module.0856520.tests" depends="register.custom.compilers,compile.module.0856520.production" description="compile module 0856520; test classes" unless="skip.tests"/>
   
   <target name="clean.module.0856520" description="cleanup module">
     <delete dir="${0856520.output.dir}"/>
