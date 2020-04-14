@@ -7,10 +7,12 @@ before_install:
   - chmod +x gradlew
 
 script:
-  - ./gradlew build
+  - echo "script"
 
 jobs:
   include:
     - stage: Custom Testing
       name: Unit-Testing
       script: ./gradlew clean test --info
+    - name: Integration-Testing
+      script: echo "Integration-Testing_script"
