@@ -94,7 +94,7 @@ public class PriorityQueueTest {
 
     @Test
     public void size() {
-        assertEquals(input.length+1, p.size());
+        assertEquals(input.length, p.size());
     }
 
     @Test
