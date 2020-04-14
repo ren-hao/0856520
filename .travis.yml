@@ -8,3 +8,9 @@ before_install:
 
 script:
   - ./gradlew build
+
+jobs:
+  include:
+    - stage: Custom Testing
+      name: Unit-Testing
+      script: ./gradlew clean test --info

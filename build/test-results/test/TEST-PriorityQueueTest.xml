@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PriorityQueueTest" tests="45" skipped="0" failures="0" errors="0" timestamp="2020-04-13T03:48:31" hostname="DCSLAB" time="0.059">
+<testsuite name="PriorityQueueTest" tests="45" skipped="0" failures="0" errors="0" timestamp="2020-04-14T05:43:26" hostname="DCSLAB" time="0.032">
   <properties/>
-  <testcase name="remove[0]" classname="PriorityQueueTest" time="0.008"/>
-  <testcase name="forEach[0]" classname="PriorityQueueTest" time="0.014"/>
-  <testcase name="peek[0]" classname="PriorityQueueTest" time="0.001"/>
+  <testcase name="remove[0]" classname="PriorityQueueTest" time="0.009"/>
+  <testcase name="forEach[0]" classname="PriorityQueueTest" time="0.007"/>
+  <testcase name="peek[0]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="poll[0]" classname="PriorityQueueTest" time="0.001"/>
-  <testcase name="size[0]" classname="PriorityQueueTest" time="0.001"/>
+  <testcase name="size[0]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="clear[0]" classname="PriorityQueueTest" time="0.001"/>
-  <testcase name="offer[0]" classname="PriorityQueueTest" time="0.001"/>
+  <testcase name="offer[0]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="forEachRemaining[0]" classname="PriorityQueueTest" time="0.001"/>
   <testcase name="PriorityQueue[0]" classname="PriorityQueueTest" time="0.001"/>
   <testcase name="remove[1]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="forEach[1]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="peek[1]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="poll[1]" classname="PriorityQueueTest" time="0.0"/>
-  <testcase name="size[1]" classname="PriorityQueueTest" time="0.001"/>
-  <testcase name="clear[1]" classname="PriorityQueueTest" time="0.001"/>
-  <testcase name="offer[1]" classname="PriorityQueueTest" time="0.001"/>
+  <testcase name="size[1]" classname="PriorityQueueTest" time="0.0"/>
+  <testcase name="clear[1]" classname="PriorityQueueTest" time="0.0"/>
+  <testcase name="offer[1]" classname="PriorityQueueTest" time="0.002"/>
   <testcase name="forEachRemaining[1]" classname="PriorityQueueTest" time="0.0"/>
-  <testcase name="PriorityQueue[1]" classname="PriorityQueueTest" time="0.002"/>
+  <testcase name="PriorityQueue[1]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="remove[2]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="forEach[2]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="peek[2]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="poll[2]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="size[2]" classname="PriorityQueueTest" time="0.0"/>
-  <testcase name="clear[2]" classname="PriorityQueueTest" time="0.001"/>
+  <testcase name="clear[2]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="offer[2]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="forEachRemaining[2]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="PriorityQueue[2]" classname="PriorityQueueTest" time="0.001"/>
-  <testcase name="remove[3]" classname="PriorityQueueTest" time="0.001"/>
+  <testcase name="remove[3]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="forEach[3]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="peek[3]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="poll[3]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="size[3]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="clear[3]" classname="PriorityQueueTest" time="0.0"/>
-  <testcase name="offer[3]" classname="PriorityQueueTest" time="0.001"/>
+  <testcase name="offer[3]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="forEachRemaining[3]" classname="PriorityQueueTest" time="0.0"/>
-  <testcase name="PriorityQueue[3]" classname="PriorityQueueTest" time="0.001"/>
-  <testcase name="remove[4]" classname="PriorityQueueTest" time="0.0"/>
-  <testcase name="forEach[4]" classname="PriorityQueueTest" time="0.001"/>
+  <testcase name="PriorityQueue[3]" classname="PriorityQueueTest" time="0.0"/>
+  <testcase name="remove[4]" classname="PriorityQueueTest" time="0.001"/>
+  <testcase name="forEach[4]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="peek[4]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="poll[4]" classname="PriorityQueueTest" time="0.0"/>
   <testcase name="size[4]" classname="PriorityQueueTest" time="0.0"/>
